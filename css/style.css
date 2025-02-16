@@ -1,0 +1,25 @@
+/*  ESTILZANDO PÁGINA PRINCIPAL  */
+
+
+.nav-tittle{
+    color: blue;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.nav-tittle > span{
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.img-lupa{
+    width: 30px;
+    height: 30px;
+    transition: 1.2s;
+}
+
+.img-lupa:hover{
+    transition: 1.2s;
+}
+
+/*    --------------------------     */
