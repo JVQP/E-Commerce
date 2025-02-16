@@ -29,7 +29,6 @@ app.use('/js', express.static('./js'));
 // ------------------------------------------ }
 
 
-
 // ---------------ROTAS DA PÁGINA-------------------- {
 
 app.get('/', function(req, res){
