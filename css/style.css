@@ -1,5 +1,17 @@
 /*  ESTILZANDO PÁGINA PRINCIPAL  */
 
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+   
+}
+
+.nav-header{
+    position: fixed;
+}
 
 .nav-tittle{
     color: blue;
@@ -8,7 +20,7 @@
 }
 
 .nav-tittle > span{
-    color: black;
+    color: white;
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -21,5 +33,22 @@
 .img-lupa:hover{
     transition: 1.2s;
 }
+
+.tittle-banner{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.banner-img{
+    margin-top: 30px;
+}
+
+
+.container-recomend{
+
+    text-align: center;
+    margin-top: 40px;
+}
+
 
 /*    --------------------------     */
