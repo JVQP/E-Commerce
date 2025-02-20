@@ -1,0 +1,13 @@
+//////////// ROTA PARA FAZER UPLOAD DE IMAGENS ///////////////
+
+/*
+
+Há sim que importa o Filesupload, configurar para poder ser utilzado - APP.USE([Nome da Variável que declarou para importar]);
+
+Comando para enviar a imagem - REQ.FILES.[ID IMAGEM].NAME
+
+Comando para enviar a imagem para uma pasta - REQ.FILES.IMAGEM.MV(__DIRNAME + '[NOME DA PASTA]' + REQ.FILES.NAME);
+
+
+
+*/

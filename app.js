@@ -1,5 +1,6 @@
 //  IMPORTANDO PACOTES //
-const express = require('express')
+const express = require('express');
+const upload = require('express-fileupload');
 const { engine } = require('express-handlebars');
 const { sqlite } = require('./bancodedados.js');
 
@@ -15,7 +16,7 @@ const PORT = process.env.BASE_URL || 8080;
 
 let app = express();
 app.use(express.json());
-
+app.use(upload());
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
