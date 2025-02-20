@@ -1,54 +1,106 @@
 /*  ESTILZANDO PÁGINA PRINCIPAL  */
 
-header{
+header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1;
-   
+
 }
 
-.nav-header{
+.banner-img{
+
+padding: 10px;
+
+
+}
+
+.nav-header {
     position: fixed;
 }
 
-.nav-tittle{
+.nav-tittle {
     color: blue;
     font-family: 'Times New Roman', Times, serif;
 
 }
 
-.nav-tittle > span{
+.nav-tittle>span {
     color: white;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.img-lupa{
-    width: 30px;
-    height: 30px;
-    transition: 1.2s;
+
+
+.tittle-banner {
+    text-align: center;    
 }
 
-.img-lupa:hover{
-    transition: 1.2s;
-}
+.container-recomend {
 
-.tittle-banner{
     text-align: center;
-    margin-top: 50px;
-}
-
-.banner-img{
     margin-top: 30px;
+  
 }
 
-
-.container-recomend{
-
-    text-align: center;
+.container-img { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
     margin-top: 40px;
+} 
+
+.image {
+    width: 200px;
+    height: 200px;
+    margin-left: 30px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    
 }
 
+.image:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.img-produtos{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.btn{
+    text-align: center;
+    margin-left: 20px;
+}
+
+.card{
+    margin-top: 40px;
+    padding: 5px;
+}
+.textos{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    font-weight: bold;
+}
+.card a{
+    margin-top: 5px;
+}
+
+.barra-pesquisa{
+
+display: flex;
+justify-content: center;
+margin-top: 30px;
+background-color: #212529;
+
+}
 
 /*    --------------------------     */
