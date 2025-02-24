@@ -36,7 +36,9 @@ app.get('/', function(req, res){
     res.render('home');
 });
 
-
+app.get('/autenticacao', function(req, res){
+    res.render('login');
+})
 
 // -------------------------------------------------- }
 
