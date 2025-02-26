@@ -40,6 +40,9 @@ app.get('/autenticacao', function(req, res){
     res.render('login');
 })
 
+app.get('/usuarios', function(req, res){
+    res.render('usuarios')
+})
 // -------------------------------------------------- }
 
 

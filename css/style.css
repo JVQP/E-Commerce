@@ -132,10 +132,29 @@ header {
 
 }
 
-.form-login{
-    background-color: #F8F9FA;
-    width: 500px;
+.form-login {
 
+    width: 700px;
+
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+    unicode-bidi: isolate;
+}
+
+.tittle-login {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container-cadastro {
+
+    margin-top: 200px;
+    justify-content: center;
+    display: flex;
+    max-width: 800px;
 }
 
 /* -----------------------------------------  */
