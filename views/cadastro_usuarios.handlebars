@@ -35,53 +35,34 @@
 
 <main>
  
- <div class="container">
+ <div class="container" id="container-cadastro">
   <div class="row">
-    <form class="row g-3">
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4">
+  <div class="col-6" id="cadastro"></div>
+  <div class="col-6" id="input-cadastroa">
+    <h1 class="titulo-cadastro">Criar conta</h1>
+   
+    <form action="/cadastro_usuario" method="post">
+      <label for="inputEmail" class="form-label">Email: </label>
+      <input type="email" name="inputEmail" class="form-control" id="inputEmail">
+      <label for="inputPassowrd" class="form-label">Senha: </label>
+      <input type="password" name="inputPassword" class="form-control" id="inputPassword">
+      <label for="inputConfirm" class="form-label">Confirmar senha: </label>
+      <input type="password" name="inputConfirm" class="form-control" id="inputConfirm">
+      <input type="checkbox" name="inputAdm" id="inputAdm"> Administrador
+      <br>
+      <input type="checkbox" name="inputCliente" id="inputCliente"> Cliente
+      <br>
+      <div class="button-cadastro">
+
+          <input type="submit" class="btn btn-primary" value="Cadastrar">
+          <input type="reset" class="btn btn-warning" value="Limpar">
+
+      </div>
+      
+    </form>
   </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </div>
-</form>
   </div>
  </div>
 
 </main>
+

@@ -37,6 +37,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/autenticacao', function(req, res){
+        
     res.render('login');
 })
 
@@ -51,6 +52,6 @@ app.get('/usuarios', function(req, res){
 // ---- INICIANDO O SERVIDOR -- { 
 
 app.listen(PORT, () => {
-    console.log(`Servidor Rodando na porta ${PORT}`);
+    console.log(`127.0.0.1:${PORT}`);
 })
 // ----------------------------}

@@ -155,3 +155,20 @@ header {
 }
 
 /* -----------------------------------------  */
+
+
+/*--------- ESTILIZANDO PÁGINA DE CADASTRO ---------- */
+
+#cadastro{
+    background-image: url('/img/11669604_20943830.jpg');
+    background-position: absoulte;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.button-cadastro{
+
+    padding-top: 10px;
+}
+
+/* ---------------------------------------------------- */
