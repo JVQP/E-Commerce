@@ -63,6 +63,37 @@
         <div class="alert alert-warning" id="mensagem" role="alert">
               <p>{{mensagem_erro}}</p>
         </div>
+
+        {{/if}}
+
+{{#if mensagem_erro_senha}}
+
+ <div class="alert alert-secundary" id="mensagem" role="alert">
+              <p>{{mensagem_erro_senha}}</p>
+        </div>
+
+{{/if}}
+
+{{#if mensagem_erro_email}}
+
+<div class="alert alert-danger" id="mensagem" role="alert">
+              <p>{{mensagem_erro_email}}</p>
+        </div>
+{{/if}}
+
+{{#if mensagem_sucesso}}
+
+   <div class="alert alert-success" id="mensagem" role="alert">
+              <p>{{mensagem_sucesso}}</p>
+        </div>
+{{/if}}
+
+{{#if mensagem_erro_cadastro}}
+
+<div class="alert alert-danger" id="mensagem" role="alert">
+              <p>{{mensagem_erro_cadastro}}</p>
+        </div>
+
 {{/if}}
         </form>
       </div>

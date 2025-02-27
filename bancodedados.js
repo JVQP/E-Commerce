@@ -21,7 +21,7 @@ const sqlite = require('sqlite3');
     email VARCHAR (100),
     senha VARCHAR(100),
     confirmar_senha VARCHAR(100),
-    administro_clinte VARCHAR(100)
+    adm_cliente VARCHAR(100)
     )`;
 
     db.run(usuarios, (err) => {
@@ -32,6 +32,11 @@ const sqlite = require('sqlite3');
         }
     }) */
 
+   /* let drop = 'DROP TABLE usuarios';
+    db.run(drop, (err) => {
+        if(!err)console.log('Tabela removida com sucesso!');
+        else console.log(err)
+    }) */
 
 module.exports = { sqlite };
 

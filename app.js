@@ -8,9 +8,25 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 
 
+
+// --------- BANCO DE DADOS CONFIGURAÇÃO ---- {
+
+
+const db = new sqlite.Database('Database.sqlite', (err) => {
+    if(!err){
+        console.log(`Conexão com Banco de dados sucedida!`);
+    } else {
+        console.log(`Erro ao conectar com o Banco de dados!`);
+    }
+});
+
+
+// -------------------------------------------- }
+
+
 // ---------- PORTA DO SERVIDOR ----- {
 
-const PORT = process.env.BASE_URL || 8080; 
+const PORT = process.env.BASE_URL || 8080;
 
 // ------------------------------ }
 
@@ -38,37 +54,63 @@ app.use('/js', express.static(path.join(__dirname, '/js')));
 
 // ---------------ROTAS DA PÁGINA-------------------- {
 
-app.get('/', function(req, res){
+app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get('/autenticacao', function(req, res){
+app.get('/autenticacao', function (req, res) {
     res.render('login');
 })
 
-app.get('/usuarios', function(req, res){
+app.get('/usuarios', function (req, res) {
     res.render('cadastro_usuarios');
 })
 
-app.post('/cadastrar_usuarios', function(req, res) {
-    
-let email = req.body.inputEmail;
-let senha = req.body.inputPassword;
-let confirme = req.body.inputConfirm;
-let adm = req.body.inputAdm;
-let cliente = req.body.inputCliente;
+app.post('/cadastrar_usuarios', function (req, res) {
 
+    let email = req.body.inputEmail;
+    let senha = req.body.inputPassword;
+    let confirme = req.body.inputConfirm;
+    let adm = req.body.inputAdm;
+    let cliente = req.body.inputCliente;
 
-if (!email || !senha || !confirme || !adm || !cliente) {
-    console.log('Preencha todos os campos !');
-    return res.render('cadastro_usuarios', { mensagem_erro: 'Por favor, Preencha todos os campos !' });
+    if (senha !== confirme) {
+        return res.render('cadastro_usuarios', { mensagem_erro_senha: 'Senhas Incompativeis !' });
 
-    
-    } if (senha !== confirme){
-      return  res.render('cadastro_usuarios', {mensagem_erro_senha: 'Senhas Incompativeis !'});
-    } 
+    }
 
-    res.render('cadastro_usuarios')
+    if (email === " " || senha === " " || confirme === " " || adm === " " || cliente === " ") {
+        console.log('Preencha todos os campos !');
+        return res.render('cadastro_usuarios', { mensagem_erro: 'Por favor, Preencha todos os campos !' });
+
+    }
+
+     let email_verificado = 'SELECT * FROM usuarios WHERE email = ?';
+        db.get(email_verificado, [email], (err, rows) => {
+
+            if(err){
+                console.log('Erro ao verifcar E-mail');
+            }  
+
+                if(rows){
+                    return res.render('cadastro_usuarios', {mensagem_erro_email: 'Já existe cadastro com esse este endereço de E-mail!'});
+                }
+            
+            else {
+                let query = 'INSERT INTO usuarios(email, senha, confirmar_senha, adm_cliente) VALUES (?,?,?,?)';
+        
+                db.run(query, [email, senha, confirme, adm, cliente], (err) => {
+                    if (!err) {
+                        console.log('Cadastro feito com sucesso!');
+                        return res.render('cadastro_usuarios', { mensagem_sucesso: 'Cadastro feito com sucesso!' });
+                    } else {
+                        console.log('Erro ao cadastrar, verifque com o administrador!', err.message);
+                        return res.render('cadastro_usuarios', { mensagem_erro_cadastro: 'Erro ao cadastrar, verifque com o administrador!' })
+                    }
+                })
+            }
+
+        }) 
 })
 // -------------------------------------------------- }
 
