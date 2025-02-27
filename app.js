@@ -25,7 +25,7 @@ app.set('views', './views');
 app.use('/bootstrap', express.static('./node_modules/bootstrap/dist'))
 app.use('/img', express.static('./img'));
 app.use('/css', express.static('./css'));
-app.use('/js', express.static('./js'));
+app.use('js', express.static('./js'));
 
 // ------------------------------------------ }
 
@@ -37,7 +37,6 @@ app.get('/', function(req, res){
 });
 
 app.get('/autenticacao', function(req, res){
-        
     res.render('login');
 })
 
