@@ -1,9 +1,9 @@
-var login = 'Registre-se';
-var n = 0;
+let texto = 'Sejam Bem Vindos !!';
+let n = 0; 
 
 setInterval(() => {
-    if(n < login.length){
-        document.getElementById('login').innerHTML += login[n];
-        n++
+    if(n < texto.length){
+        document.getElementById('titulo-login').innerHTML += texto[n];
+        n ++
     }
-}, 100)
+}, 200)

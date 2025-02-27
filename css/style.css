@@ -125,36 +125,33 @@ header {
 
 /*-----ESTILZANDO PÁGINA DE LOGIN-------------*/
 
-.container-login {
-    margin-top: 200px;
+.row {
+    padding-top: 200px;
+
+}
+
+#col-6-titulo {
+    height: 411.7px;
     display: flex;
-    justify-content: center;
-
+    background-color: #F8F9FA;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('/img/17465926_2007.i039.019_cyber_security_spyware_data_protection_isometric_set-06.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.form-login {
-
-    width: 700px;
-
+#col-6 {
+    border: solid #252525;
+    height: 411.7px;
+    border-radius: 20px;
 }
 
-form {
-    display: block;
-    margin-top: 0em;
-    unicode-bidi: isolate;
-}
 
-.tittle-login {
+.login{
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-.container-cadastro {
-
-    margin-top: 200px;
-    justify-content: center;
-    display: flex;
-    max-width: 800px;
 }
 
 /* -----------------------------------------  */

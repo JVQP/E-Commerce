@@ -41,7 +41,7 @@ app.get('/autenticacao', function(req, res){
 })
 
 app.get('/usuarios', function(req, res){
-    res.render('usuarios')
+    res.render('cadastro_usuarios')
 })
 // -------------------------------------------------- }
 
