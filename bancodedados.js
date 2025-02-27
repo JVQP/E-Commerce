@@ -7,13 +7,13 @@ const sqlite = require('sqlite3');
 
 
     
-    const db = new sqlite.Database('Database.sqlite', (err) => {
+ /*const db = new sqlite.Database('Database.sqlite', (err) => {
         if(!err){
             console.log(`Conexão com Banco de dados sucedida!`);
         } else {
             console.log(`Erro ao conectar com o Banco de dados!`);
         }
-    });
+    }); */
     
     /*let usuarios = `CREATE TABLE IF NOT EXISTS usuarios(
     
@@ -22,7 +22,8 @@ const sqlite = require('sqlite3');
     senha VARCHAR(100),
     confirmar_senha VARCHAR(100),
     adm_cliente VARCHAR(100)
-    )`;
+    
+    )`; 
 
     db.run(usuarios, (err) => {
         if(err){
@@ -30,9 +31,9 @@ const sqlite = require('sqlite3');
         } else {
             console.log(`Tabela usuários criada com sucesso!`);
         }
-    }) */
+    })  */
 
-   /* let drop = 'DROP TABLE usuarios';
+  /*let drop = 'DELETE FROM usuarios';
     db.run(drop, (err) => {
         if(!err)console.log('Tabela removida com sucesso!');
         else console.log(err)

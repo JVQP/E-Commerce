@@ -71,15 +71,16 @@ app.post('/cadastrar_usuarios', function (req, res) {
     let email = req.body.inputEmail;
     let senha = req.body.inputPassword;
     let confirme = req.body.inputConfirm;
-    let adm = req.body.inputAdm;
-    let cliente = req.body.inputCliente;
+    let adm_cliente = req.body.inputCliente;
+    
 
     if (senha !== confirme) {
+        console.log('Senhas incompativeis!');
         return res.render('cadastro_usuarios', { mensagem_erro_senha: 'Senhas Incompativeis !' });
 
     }
 
-    if (email === " " || senha === " " || confirme === " " || adm === " " || cliente === " ") {
+    if (req.body.inputEmail === " " || req.body.inputPassword === " " || req.body.inputConfirm === " " || req.body.inputCliente === " ") {
         console.log('Preencha todos os campos !');
         return res.render('cadastro_usuarios', { mensagem_erro: 'Por favor, Preencha todos os campos !' });
 
@@ -99,7 +100,7 @@ app.post('/cadastrar_usuarios', function (req, res) {
             else {
                 let query = 'INSERT INTO usuarios(email, senha, confirmar_senha, adm_cliente) VALUES (?,?,?,?)';
         
-                db.run(query, [email, senha, confirme, adm, cliente], (err) => {
+                db.run(query, [email, senha, confirme, adm_cliente], (err) => {
                     if (!err) {
                         console.log('Cadastro feito com sucesso!');
                         return res.render('cadastro_usuarios', { mensagem_sucesso: 'Cadastro feito com sucesso!' });
