@@ -10,7 +10,40 @@ Comando para enviar a imagem para uma pasta - REQ.FILES.IMAGEM.MV(__DIRNAME + '[
 
 
 
+let email = document.getElementById('inputEmail');
+let senha = document.getElementById('inputPassword');
+let confirme = document.getElementById('inputConfirm');
+let adm = document.getElementById('inputAdm');
+let cliente = document.getElementById('inputCliente');
 
+
+  CONFIGURANDO O FETCH   
+if (window.location.pathname == '/cadastrar_usuarios') {
+
+    let usuarios = {
+        email: document.getElementById('inputEmail'),
+        senha: document.getElementById('inputPassword'),
+        confirme: document.getElementById('inputConfirm'),
+        adm: document.getElementById('inputAdm'),
+        cliente: document.getElementById('inputCliente')
+    }
+
+    let options = {
+        methood: 'POST',
+        headers: { 'Conttent-Type': 'application/json' },
+        body: JSON.stringify(usuarios)
+    }
+
+    if (email == " " || senha == " " || confirme == " " || adm == " " || cliente == " ") {
+        alert('Preencha todos os campos!');
+    } else{
+        fetch('/cadastrar_usuarios', options)
+        .then(response => response.json())
+        .then(response => {
+            alert(response);
+        })
+    }
+}
 
 
 */

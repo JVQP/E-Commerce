@@ -1,9 +1,17 @@
-var texto = 'Login';
-var n = 0;
+if (window.location.pathname == '/autenticacao') {
 
-setInterval(() => {
-    if(n < texto.length){
-        document.getElementById('titulo.login').innerHTML += texto[n];
-        n++
+    var texto = 'Sejam Bem Vindos.';
+    var n = 0;
+
+    function texto_animado() {
+        if (n < texto.length) {
+            document.getElementById('titulo-login').innerHTML += texto[n];
+            n++
+            setTimeout(texto_animado, 200);
+        }
     }
-}, 200);
+    texto_animado();
+
+}
+
+

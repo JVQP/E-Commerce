@@ -164,11 +164,24 @@ header {
     background-position: absoulte;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 .button-cadastro{
-
     padding-top: 10px;
 }
 
+#mensagem {
+    padding: 10px;
+   
+}
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    margin-top: 10px;
+}
 /* ---------------------------------------------------- */
