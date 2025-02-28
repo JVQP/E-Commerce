@@ -6,16 +6,17 @@ const sqlite = require('sqlite3');
 // CONFIGURANDO BANCO DE DADOS // 
 
 
-    
- /*const db = new sqlite.Database('Database.sqlite', (err) => {
-        if(!err){
+function Create_table() {
+
+    const db = new sqlite.Database('Database.sqlite', (err) => {
+        if (!err) {
             console.log(`Conexão com Banco de dados sucedida!`);
         } else {
             console.log(`Erro ao conectar com o Banco de dados!`);
         }
-    }); */
-    
-    /*let usuarios = `CREATE TABLE IF NOT EXISTS usuarios(
+    });
+
+    let usuarios = `CREATE TABLE IF NOT EXISTS usuarios(
     
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email VARCHAR (100),
@@ -23,21 +24,18 @@ const sqlite = require('sqlite3');
     confirmar_senha VARCHAR(100),
     adm_cliente VARCHAR(100)
     
-    )`; 
+    )`;
 
     db.run(usuarios, (err) => {
-        if(err){
+        if (err) {
             console.log(`Erro ao criar tabela`, err);
         } else {
             console.log(`Tabela usuários criada com sucesso!`);
         }
-    })  */
+    })
 
-  /*let drop = 'DELETE FROM usuarios';
-    db.run(drop, (err) => {
-        if(!err)console.log('Tabela removida com sucesso!');
-        else console.log(err)
-    }) */
+}
+
 
 module.exports = { sqlite };
 
