@@ -134,30 +134,24 @@ app.post('/login', function (req, res) {
             console.log('Erro no banco de dados', err.message);
         }
 
-        if (usuarios) {
-
-            console.log('Bem vindo !' + usuarios.email);
+        if(!usuarios){
+            console.log('E-Mail ou senha inválidos')
+            return res.render('login');
         }
-        let verificador = 'SELECT adm_cliente FROM usuarios WHERE email = ? ';
 
-            db.get(verificador, [email], (err, usuarios) => {
-                if(err){
-                    console.log('Erro no banco de dados', err.message);
-                }
+        if (usuarios) {
+            console.log('Bem vindo ' + usuarios.email);
+        }
 
-                if(usuarios.adm_cliente == 'Administrador'){
-                    res.redirect('/administrador');
-                } 
-              
-                else if(usuarios.adm_cliente == 'Cliente') {
-                    res.redirect('/cliente');
-                   
-                } else {
-                    console.log('E-Mail ou senha inválidos ');
-                    res.render('login');
-                }   
-
-            })
+            if(usuarios.adm_cliente == 'Administrador'){
+                return res.redirect('/administrador');
+            } else if(usuarios.adm_cliente == 'Cliente'){
+                return res.redirect('/cliente');
+            } else {
+                
+            }
+        
+        
       
     })
 })
