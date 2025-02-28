@@ -134,7 +134,7 @@ app.post('/login', function (req, res) {
             console.log('Erro no banco de dados', err.message);
         }
 
-        if(!usuarios){
+        if (!usuarios) {
             console.log('E-Mail ou senha inválidos')
             return res.render('login');
         }
@@ -143,16 +143,16 @@ app.post('/login', function (req, res) {
             console.log('Bem vindo ' + usuarios.email);
         }
 
-            if(usuarios.adm_cliente == 'Administrador'){
-                return res.redirect('/administrador');
-            } else if(usuarios.adm_cliente == 'Cliente'){
-                return res.redirect('/cliente');
-            } else {
-                
-            }
-        
-        
-      
+        if (usuarios.adm_cliente == 'Administrador') {
+            return res.redirect('/administrador');
+        } else if (usuarios.adm_cliente == 'Cliente') {
+            return res.redirect('/cliente');
+        } else {
+
+        }
+
+
+
     })
 })
 // -------------------------------------------------- }
