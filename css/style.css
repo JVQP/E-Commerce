@@ -185,3 +185,16 @@ header {
     margin-top: 10px;
 }
 /* ---------------------------------------------------- */
+
+
+
+/* ---------- ESTILIZANDO PÁGINA DE CADASTRO DE PRODUTOS ---------- */
+
+#produto{
+    background-image: url('/img/cadastro_produto.jpg');
+    background-position: absoulte;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*------------------------------------------------------------------- */

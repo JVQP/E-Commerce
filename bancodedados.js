@@ -36,6 +36,41 @@ function Create_table() {
 
 }
 
+function produtos(){
+
+    const db = new sqlite.Database('Database.sqlite', (err) => {
+        if (!err) {
+            console.log(`Conexão com Banco de dados sucedida!`);
+        } else {
+            console.log(`Erro ao conectar com o Banco de dados!`);
+        }
+    });
+
+ /*   let produtos = `CREATE TABLE IF NOT EXISTS produtos(
+
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+produto VARCHAR(100),
+preco VARCHAR(100),
+quantidade VARCHAR(100),
+imagem VARCHAR(100),
+destaque VARCHAR(100)
+
+)` */
+
+
+let dell = `DELETE FROM produtos`;
+
+db.run(dell, (err) => {
+    if(err){
+        console.log('Erro ao criar tabela', err);
+    } else {
+        console.log('Tabela produtos criada com sucesso!');
+    }
+})
+
+}
+
+
 
 module.exports = { sqlite };
 

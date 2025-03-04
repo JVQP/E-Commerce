@@ -14,4 +14,3 @@ if (window.location.pathname == '/autenticacao') {
 
 }
 
-

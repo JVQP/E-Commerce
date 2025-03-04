@@ -1,6 +1,6 @@
 //  IMPORTANDO PACOTES //
 const express = require('express');
-const upload = require('express-fileupload');
+const files = require('express-fileupload');
 const { engine } = require('express-handlebars');
 const { sqlite } = require('./bancodedados.js');
 const path = require('path')
@@ -35,7 +35,7 @@ const PORT = process.env.BASE_URL || 8080;
 
 let app = express();
 app.use(express.json());
-app.use(upload());
+app.use(files());
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
@@ -72,6 +72,10 @@ app.get('/administrador', function (req, res) {
 
 app.get('/cliente', function (req, res) {
     res.render('cliente');
+})
+
+app.get('/produtos', function(req, res) {
+    res.render('cadastro_produtos');
 })
 
 app.post('/cadastrar_usuarios', function (req, res) {
@@ -153,7 +157,28 @@ app.post('/login', function (req, res) {
 
 
 
+    });
+})
+
+app.post('/cadastrar-produtos', function(req, res) {
+
+    let produto = req.body.inputProduto;
+    let preco = req.body.inputPreco;
+    let qtd = req.body.inputQtd;
+    let destaque = req.body.inputFixar;
+    let imagem = req.files.imagem.name;
+
+    let produtos = `INSERT INTO produtos (produto, preco, quantidade, imagem, destaque) VALUES (?, ?, ?, ?, ?)`;
+
+    db.run(produtos, [produto, preco, qtd, imagem, destaque ], (err) => {
+        if(err){
+            console.log('Erro ao cadastrar produtos ', err.message);
+        } else {
+            console.log('Produto cadastrado com sucesso!');
+            res.render('cadastro_produtos');
+        }
     })
+
 })
 // -------------------------------------------------- }
 
