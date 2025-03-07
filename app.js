@@ -180,17 +180,9 @@ app.post('/cadastrar-produtos', function(req, res) {
     let destaque = req.body.inputFixar;
     let imagem = req.files.imagem.name;
 
-    let produtos = `INSERT INTO produtos (produto, preco, quantidade, imagem, destaque) VALUES (?, ?, ?, ?, ?)`;
-
-    db.run(produtos, [produto, preco, qtd, imagem, destaque ], (err) => {
-        if(err){
-            console.log('Erro ao cadastrar produtos ', err.message);
-        } else {
-            console.log('Produto cadastrado com sucesso!');
-            req.files.imagem.mv(__dirname + '/img/' + req.files.imagem.name);
-            res.render('cadastro_produtos');
+        if(!produto.trim() || !preco.trim() || !qtd.trim() || !destaque.trim() || !imagem.trim()){
+            res.render('cadastro_produtos', { mensagem_erro_produto: 'Preencha todos os campos !' });
         }
-    })
            
 })
 // -------------------------------------------------- }
