@@ -71,6 +71,5 @@ db.run(dell, (err) => {
 }
 
 
-
 module.exports = { sqlite };
 

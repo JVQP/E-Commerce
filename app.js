@@ -55,7 +55,19 @@ app.use('/js', express.static(path.join(__dirname, '/js')));
 // ---------------ROTAS DA PÁGINA-------------------- {
 
 app.get('/', function (req, res) {
-    res.render('home');
+   
+    let Produto = `SELECT * FROM produtos WHERE destaque = 'sim' `;
+
+    db.all(Produto, (err, produto) => {
+        if(err){
+            console.log('Erro no banco de dados!', err.message);
+            res.status(500).send('Erro interno no servidor ou no banco de dados!');
+        } else {
+            res.render('home', { produtos: produto })
+        }
+    })
+   
+   
 });
 
 app.get('/autenticacao', function (req, res) {
@@ -175,10 +187,11 @@ app.post('/cadastrar-produtos', function(req, res) {
             console.log('Erro ao cadastrar produtos ', err.message);
         } else {
             console.log('Produto cadastrado com sucesso!');
+            req.files.imagem.mv(__dirname + '/img/' + req.files.imagem.name);
             res.render('cadastro_produtos');
         }
     })
-
+           
 })
 // -------------------------------------------------- }
 
