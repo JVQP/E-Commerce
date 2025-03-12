@@ -6,6 +6,7 @@ const { sqlite } = require('./bancodedados.js');
 const path = require('path')
 const cors = require('cors');
 const bodyParser = require('body-parser')
+const fs = require('fs')
 
 
 
@@ -178,12 +179,36 @@ app.post('/cadastrar-produtos', function(req, res) {
     let preco = req.body.inputPreco;
     let qtd = req.body.inputQtd;
     let destaque = req.body.inputFixar;
-    let imagem = req.files.imagem.name;
 
-        if(!produto.trim() || !preco.trim() || !qtd.trim() || !destaque.trim() || !imagem.trim()){
-            res.render('cadastro_produtos', { mensagem_erro_produto: 'Preencha todos os campos !' });
+      try{
+
+        let imagem = req.files.imagem.name;
+
+        if(!imagem){
+            let produtos = `INSERT INTO produtos (produto, preco, qtd, imagem, destaque) VALUES (?, ?, ?, ?, ?)`;
+         
+            db.run(produtos, [produto, preco, qtd, imagem, destaque], (err) => {
+                    if(err) {
+                        console.log('Erro ao cadastrar produto !');
+                        res.render('cadastro_produtos', {mensagem_erro_cadastro: 'Falha no cadastro do produto!'});
+                    } else {
+                            console.log('Produto cadastrado com sucesso!');
+                            res.render('cadastro_produtos', {mensagem_sucesso_cadastro: 'Produto cadastrado com sucesso !'});
+                    }
+            })
         }
-           
+
+
+      } catch(erro) {
+        
+            console.log('Erro de upload !');
+            res.render('cadastro_produtos', {upload: 'Erro ao carregar a imagem, selecione novamente.'});
+
+      }
+
+      
+        
+
 })
 // -------------------------------------------------- }
 

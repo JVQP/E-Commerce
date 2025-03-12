@@ -1,18 +1,15 @@
-//////////// ROTA PARA FAZER UPLOAD DE IMAGENS ///////////////
 
-/*
+# Há sim que importa o Filesupload, configurar para poder ser utilzado - APP.USE([Nome da Variável que declarou para importar]);
 
-Há sim que importa o Filesupload, configurar para poder ser utilzado - APP.USE([Nome da Variável que declarou para importar]);
+# Comando para enviar a imagem - REQ.FILES.[ID IMAGEM].NAME
 
-Comando para enviar a imagem - REQ.FILES.[ID IMAGEM].NAME
-
-Comando para enviar a imagem para uma pasta - REQ.FILES.IMAGEM.MV(__DIRNAME + '[NOME DA PASTA]' + REQ.FILES.NAME);
+# Comando para enviar a imagem para uma pasta - REQ.FILES.IMAGEM.MV(__DIRNAME + '[NOME DA PASTA]' + REQ.FILES.NAME);
 
 
-                    REMOVENDO IMAGEM DO DIRETÓRIO 
+                   # REMOVENDO IMAGEM DO DIRETÓRIO 
 
-    fs.unlink(__dirname+'/imagens/'+req.params.imagem, (erro_imagem)=>{
-            console.log('Falha ao remover a imagem ');
-        });
+   # fs.unlink(__dirname+'/imagens/'+req.params.imagem, (erro_imagem)=>{
+         ##   });
 
-*/
+
+
