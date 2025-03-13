@@ -194,7 +194,11 @@ app.post('/cadastrar-produtos', function(req, res) {
                     } else {
                             console.log('Produto cadastrado com sucesso!');
                             res.render('cadastro_produtos', {mensagem_sucesso_cadastro: 'Produto cadastrado com sucesso !'});
-                    }
+                   
+                        req.files.imagem.mv(__dirname + '/img/' + req.files.name);
+
+                        }
+
             })
         }
 
