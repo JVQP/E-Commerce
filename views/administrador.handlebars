@@ -128,12 +128,13 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="/img/Fone.jpg" class="card-img-top">
+       {{#each produtos}}
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img src="/img/{{imagem}}" class="card-img-top" alt="Fone de ouvido">
             <div class="card-body">
-              <p class="card-title"><strong>Fone de Ouvido</strong></p>
-              <p class="card-text"><strong>R$ 100.00</strong></p>
+              <h5 class="card-title">{{produto}}</h5>
+              <p class="card-text"><strong>R$ {{preco}}</strong></p>
               <div class="d-grid gap-2">
                 <button class="btn btn-primary" type="button">Comprar</button>
                 <button class="btn btn-warning" type="button">Adicionar ao carrinho</button>
@@ -141,6 +142,7 @@
             </div>
           </div>
         </div>
+        {{/each}}
       </div>
     </div>
 

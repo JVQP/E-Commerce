@@ -78,18 +78,16 @@ header {
 }
 
 
-
-.card {
-    margin-top: 40px;
-    padding: 5px;
-    transition: transform(1.6s);
-    cursor: pointer;
+#row-produtos {
+    display: flex;
 
 }
 
-.card:hover {
-    transform: scale(1.1);
+#card-produtos {
+    height: 270px;
+    width: 516px;
 }
+
 
 .textos {
     display: flex;
@@ -155,7 +153,7 @@ header {
 }
 
 
-.login{
+.login {
     text-align: center;
 }
 
@@ -164,21 +162,21 @@ header {
 
 /*--------- ESTILIZANDO PÁGINA DE CADASTRO ---------- */
 
-#cadastro{
+#cadastro {
     background-image: url('/img/11669604_20943830.jpg');
     background-position: absoulte;
     background-repeat: no-repeat;
     background-size: cover;
-    
+
 }
 
-.button-cadastro{
+.button-cadastro {
     padding-top: 10px;
 }
 
 #mensagem {
     padding: 10px;
-   
+
 }
 
 .alert {
@@ -189,13 +187,14 @@ header {
     border-radius: .25rem;
     margin-top: 10px;
 }
+
 /* ---------------------------------------------------- */
 
 
 
 /* ---------- ESTILIZANDO PÁGINA DE CADASTRO DE PRODUTOS ---------- */
 
-#produto{
+#produto {
     background-image: url('/img/cadastro_produto.jpg');
     background-position: absoulte;
     background-repeat: no-repeat;

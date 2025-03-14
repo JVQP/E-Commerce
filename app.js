@@ -56,19 +56,19 @@ app.use('/js', express.static(path.join(__dirname, '/js')));
 // ---------------ROTAS DA PÁGINA-------------------- {
 
 app.get('/', function (req, res) {
-   
+
     let Produto = `SELECT * FROM produtos WHERE destaque = 'sim' `;
 
     db.all(Produto, (err, produto) => {
-        if(err){
+        if (err) {
             console.log('Erro no banco de dados!', err.message);
             res.status(500).send('Erro interno no servidor ou no banco de dados!');
         } else {
             res.render('home', { produtos: produto })
         }
     })
-   
-   
+
+
 });
 
 app.get('/autenticacao', function (req, res) {
@@ -87,7 +87,7 @@ app.get('/cliente', function (req, res) {
     res.render('cliente');
 })
 
-app.get('/produtos', function(req, res) {
+app.get('/produtos', function (req, res) {
     res.render('cadastro_produtos');
 })
 
@@ -173,45 +173,41 @@ app.post('/login', function (req, res) {
     });
 })
 
-app.post('/cadastrar-produtos', function(req, res) {
+app.post('/cadastrar-produtos', function (req, res) {
 
     let produto = req.body.inputProduto;
     let preco = req.body.inputPreco;
     let qtd = req.body.inputQtd;
     let destaque = req.body.inputFixar;
+    let imagem = req.files.imagem.name;
 
-      try{
-
-        let imagem = req.files.imagem.name;
-
-        if(!imagem){
-            let produtos = `INSERT INTO produtos (produto, preco, qtd, imagem, destaque) VALUES (?, ?, ?, ?, ?)`;
-         
+    try {
+        if (!produto.trim() || !preco.trim() || !qtd.trim() || !destaque.trim()) {
+            res.render('cadastro_produtos', { mensagem_produtos: 'Preencha todos os campos para finalizar o cadastro!' });
+        } else {
+            let produtos = `INSERT INTO produtos (produto, preco, quantidade, imagem, destaque) VALUES (?, ?, ?, ?, ?)`;
             db.run(produtos, [produto, preco, qtd, imagem, destaque], (err) => {
-                    if(err) {
-                        console.log('Erro ao cadastrar produto !');
-                        res.render('cadastro_produtos', {mensagem_erro_cadastro: 'Falha no cadastro do produto!'});
-                    } else {
-                            console.log('Produto cadastrado com sucesso!');
-                            res.render('cadastro_produtos', {mensagem_sucesso_cadastro: 'Produto cadastrado com sucesso !'});
-                   
-                        req.files.imagem.mv(__dirname + '/img/' + req.files.name);
 
-                        }
+                if (err) {
+                    console.log('Falha no cadastro do produto, tente novamente mais tarde!', err.message);
+                    res.render('cadastro_produtos', { mensagem_erro_produto: 'Falha no cadastro do produto, tente novamente mais tarde!' })
+                } else {
+                    console.log('Produto cadastrado com sucesso!');
+                    req.files.imagem.mv(__dirname + '/img/' + req.files.imagem.name);
+                    res.render('cadastro_produtos', { mensagem_sucesso_produto: 'Produto cadastrado com sucesso!' })
+                }
 
             })
         }
 
+    } catch (erro) {
 
-      } catch(erro) {
-        
-            console.log('Erro de upload !');
-            res.render('cadastro_produtos', {upload: 'Erro ao carregar a imagem, selecione novamente.'});
+        console.log('Imagem não carregada, tente novamente!');
+        res.render('cadastro_produtos', { mensagem_erro_imagem: 'Imagem não carregada, tente novamente!' });
 
-      }
+    }
 
-      
-        
+
 
 })
 // -------------------------------------------------- }

@@ -114,10 +114,11 @@
     </div>
 
     <div class="container">
-      <div class="row justify-content-evenly">
-        <div class="col-6">
+      <div class="row">
+       {{#each produtos}}
+        <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="/img/{{imagem}}" class="card-img-top" alt="{{produto}}">
+            <img src="/img/{{imagem}}" class="card-img-top" alt="Fone de ouvido">
             <div class="card-body">
               <h5 class="card-title">{{produto}}</h5>
               <p class="card-text"><strong>R$ {{preco}}</strong></p>
@@ -128,8 +129,8 @@
             </div>
           </div>
         </div>
+        {{/each}}
       </div>
     </div>
-
 
 </main>
