@@ -179,32 +179,46 @@ app.post('/cadastrar-produtos', function (req, res) {
     let preco = req.body.inputPreco;
     let qtd = req.body.inputQtd;
     let destaque = req.body.inputFixar;
-    let imagem = req.files.imagem.name;
+
 
     try {
         if (!produto.trim() || !preco.trim() || !qtd.trim() || !destaque.trim()) {
-            res.render('cadastro_produtos', { mensagem_produtos: 'Preencha todos os campos para finalizar o cadastro!' });
-        } else {
-            let produtos = `INSERT INTO produtos (produto, preco, quantidade, imagem, destaque) VALUES (?, ?, ?, ?, ?)`;
-            db.run(produtos, [produto, preco, qtd, imagem, destaque], (err) => {
-
-                if (err) {
-                    console.log('Falha no cadastro do produto, tente novamente mais tarde!', err.message);
-                    res.render('cadastro_produtos', { mensagem_erro_produto: 'Falha no cadastro do produto, tente novamente mais tarde!' })
-                } else {
-                    console.log('Produto cadastrado com sucesso!');
-                    req.files.imagem.mv(__dirname + '/img/' + req.files.imagem.name);
-                    res.render('cadastro_produtos', { mensagem_sucesso_produto: 'Produto cadastrado com sucesso!' })
-                }
-
-            })
+            return res.render('cadastro_produtos', { mensagem_produtos: 'Preencha todos os campos para finalizar o cadastro!' });
         }
 
+        if (!req.files || !req.files.imagem) {
+
+            res.render('cadastro_produtos', { mensagem_erro_imagem: 'Imagem não carregada, tente novamente!' });
+
+        }
+
+        let imagem = req.files.imagem.name;
+
+        let produtos = `INSERT INTO produtos (produto, preco, quantidade, imagem, destaque) VALUES (?, ?, ?, ?, ?)`;
+        db.run(produtos, [produto, preco, qtd, imagem, destaque], (err) => {
+
+            if (err) {
+                console.log('Falha no cadastro do produto, tente novamente mais tarde!', err.message);
+                return res.render('cadastro_produtos', { mensagem_erro_produto: 'Falha no cadastro do produto, tente novamente mais tarde!' })
+            }
+
+
+            imagem.mv(__dirname + '/img/' + imagem.name, (erro) => {
+
+                if (erro) {
+                    console.log('Erro ao salvar a imagem', erro);
+                    res.render('cadastro_produtos', { mensagem_erro_imagem: 'Erro ao salvar imagem, tente novamente!' })
+                }
+                console.log('Produto cadastrado com sucesso!');
+                return res.render('cadastro_produtos', { mensagem_sucesso_produto: 'Produto cadastrado com sucesso!' })
+            });
+
+        });
+
+
     } catch (erro) {
-
-        console.log('Imagem não carregada, tente novamente!');
-        res.render('cadastro_produtos', { mensagem_erro_imagem: 'Imagem não carregada, tente novamente!' });
-
+        console.log('Erro inesperado:', erro);
+        return res.render('cadastro_produtos', { mensagem_erro_imagem: 'Erro inesperado no upload de imagem, tente novamente!' });
     }
 
 

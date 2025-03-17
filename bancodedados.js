@@ -46,7 +46,7 @@ function produtos(){
         }
     });
 
- /*   let produtos = `CREATE TABLE IF NOT EXISTS produtos(
+ /*  let produtos = `CREATE TABLE IF NOT EXISTS produtos(
 
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 produto VARCHAR(100),
@@ -57,8 +57,7 @@ destaque VARCHAR(100)
 
 )` */
 
-
-let dell = `DELETE FROM produtos`;
+let dell = `DELETE FROM produtos WHERE id = 17`;
 
 db.run(dell, (err) => {
     if(err){
@@ -69,6 +68,7 @@ db.run(dell, (err) => {
 })
 
 }
+
 
 
 module.exports = { sqlite };
