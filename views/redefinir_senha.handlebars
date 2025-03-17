@@ -1,0 +1,94 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <h2 class="nav-tittle" href="">Tech<span>Info</span></h2>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/autenticacao">Login</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Computadores</a></li>
+                            <li><a class="dropdown-item" href="#">Notebook</a></li>
+                            <li><a class="dropdown-item" href="#">Fones</a></li>
+                            <li><a class="dropdown-item" href="#">Teclados e Mouse´s</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="closer">
+                    <a href="/"><button type="button" class="btn-close btn-close-white" aria-label="Close"></button></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<main>
+
+    <div class="container" id="redefinir">
+        <div class="row">
+            <h1 class="tittle-redefinir" id="tittle_senha"></h1>
+            <form action="/redefinir" method="post">
+
+                <label for="email" class="form-label">E-Mail: </label>
+                <input type="text" name="email" placeholder="" class="form-control">
+                <div id="emailHelp" class="form-text">Nunca compartilharemos seu E-mail com mais ninguém.
+                </div>
+                <br>
+                <label for="redefinir_senha" class="form-label">Senha: </label>
+                <input type="password" name="redefinir_senha" class="form-control" id="redefinir_senha">
+                <br>
+                <label for="redefinir_confirm" class="form-label">Confirmar senha: </label>
+                <input type="password" name="redefinir_confirm" class="form-control" id="redefinir_confirm">
+
+                <br>
+                <input type="submit" class="btn btn-primary">
+                <input type="reset" value="Cancelar" class="btn btn-warning">
+            </form>
+        </div>
+
+        {{#if mensagem_senha}}
+
+        <div class="alert alert-danger"><i class="bi bi-exclamation-triangle"> {{mensagem_senha}}</i></div>
+
+        {{/if}}
+
+        {{#if mensagem_erro_refefinir}}
+        <div class="alert alert-danger"><i class="bi bi-exclamation-triangle"> {{mensagem_erro_refefinir}}</i></div>
+        {{/if}}
+
+        {{#if mensagem_erro_email}}
+        <div class="alert alert-danger"><i class="bi bi-exclamation-triangle"> {{mensagem_erro_email}}</i></div>
+        {{/if}}
+
+        {{#if mensagem_sucesso_redefinir}}
+        <div class="alert alert-success" id="mensagem" role="alert"><i class="bi bi-check2-circle">
+                {{mensagem_sucesso_redefinir}}</div></i>
+        {{/if}}
+    </div>
+
+
+
+</main>
+
+<script src="/js/index.js"></script>

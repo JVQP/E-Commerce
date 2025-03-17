@@ -57,7 +57,7 @@ destaque VARCHAR(100)
 
 )` */
 
-let dell = `DELETE FROM produtos WHERE id = 17`;
+let dell = `DELETE FROM produtos WHERE id = '19'`;
 
 db.run(dell, (err) => {
     if(err){
@@ -68,7 +68,6 @@ db.run(dell, (err) => {
 })
 
 }
-
 
 
 module.exports = { sqlite };

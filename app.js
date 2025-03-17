@@ -80,16 +80,46 @@ app.get('/usuarios', function (req, res) {
 })
 
 app.get('/administrador', function (req, res) {
-    res.render('administrador')
+
+    let Produto = `SELECT * FROM produtos WHERE destaque = 'sim' `;
+
+    db.all(Produto, (err, produto) => {
+        if (err) {
+            console.log('Erro no banco de dados!', err.message);
+            res.status(500).send('Erro interno no servidor ou no banco de dados!');
+        } else {
+            res.render('administrador', { produtos: produto })
+        }
+    })
+
+
 })
 
 app.get('/cliente', function (req, res) {
-    res.render('cliente');
+
+    let Produto = `SELECT * FROM produtos WHERE destaque = 'sim' `;
+
+    db.all(Produto, (err, produto) => {
+        if (err) {
+            console.log('Erro no banco de dados!', err.message);
+            res.status(500).send('Erro interno no servidor ou no banco de dados!');
+        } else {
+            res.render('cliente', { produtos: produto })
+        }
+    })
+
 })
 
 app.get('/produtos', function (req, res) {
     res.render('cadastro_produtos');
 })
+
+app.get('/redefinir_senha', function (req, res) {
+    res.render('redefinir_senha');
+})
+
+
+
 
 app.post('/cadastrar_usuarios', function (req, res) {
 
@@ -153,7 +183,7 @@ app.post('/login', function (req, res) {
 
         if (!usuarios) {
             console.log('E-Mail ou senha inválidos')
-            return res.render('login');
+            return res.render('login', { mensagem_login: 'E-Mail ou senha inválidos, tente novamente!' });
         }
 
         if (usuarios) {
@@ -171,7 +201,61 @@ app.post('/login', function (req, res) {
 
 
     });
-})
+});
+
+app.post('/redefinir', function (req, res) {
+
+    let email = req.body.email;
+    let senha = req.body.redefinir_senha;
+    let confirm_senha = req.body.redefinir_confirm;
+
+
+    if (senha !== confirm_senha) {
+        console.log('Senhas não compatíveis!');
+        res.render('redefinir_senha', { mensagem_senha: 'Senhas não campatíveis!' });
+    } else {
+
+        let usuario = `SELECT * FROM usuarios WHERE email = ?`;
+
+        db.get(usuario, [email], (err, usuarios) => {
+
+            if (err) {
+                console.log('Erro interno servidor ou no banco de dados!');
+                return res.render('redefinir_senha', { mensagem_erro_refefinir: 'Erro interno no servidor ou no banco de dados, por favor entrar em contato com o administrador!' });
+            }
+
+            if (!usuarios) {
+                console.log('Esse endereço de E-Mail não existe ou não cadastrado, tente novamente!');
+                return res.render('redefinir_senha', { mensagem_erro_email: 'Esse endereço de E-Mail não existe ou não cadastrado, tente novamemte!' });
+            }
+
+            if (usuarios) {
+                console.log('E-Mail existe');
+
+            }
+
+
+            let update = `UPDATE usuarios SET senha = ?, confirmar_senha = ? WHERE email = ? `;
+
+            db.run(update, [senha, confirm_senha, email], (err) => {
+                if (err) {
+                    console.log('Erro interno no servidor ou no banco de dados!', err.message);
+                    res.render('redefinir_senha', { mensagem_erro_redefinir: 'Falha na redefinição de senha, tente novamente!' })
+                } else {
+                    console.log('Redefinição de senha feita com sucesso!');
+                    res.render('redefinir_senha', { mensagem_sucesso_redefinir: 'Senha alterada com sucesso!' });
+                }
+            });
+
+
+        });
+
+    }
+
+
+
+});
+
 
 app.post('/cadastrar-produtos', function (req, res) {
 
@@ -203,7 +287,7 @@ app.post('/cadastrar-produtos', function (req, res) {
             }
 
 
-            imagem.mv(__dirname + '/img/' + imagem.name, (erro) => {
+            req.files.imagem.mv(__dirname + '/img/' + req.files.imagem.name, (erro) => {
 
                 if (erro) {
                     console.log('Erro ao salvar a imagem', erro);

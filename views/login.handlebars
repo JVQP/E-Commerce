@@ -22,7 +22,7 @@
                     </li>
                 </ul>
                 <div class="closer">
-                    <a href="/"><button type="button" class="btn-close btn-close-white" aria-label="Close"></button></a> 
+                    <a href="/"><button type="button" class="btn-close btn-close-white" aria-label="Close"></button></a>
                 </div>
 
             </div>
@@ -33,37 +33,42 @@
 
 <main>
 
-<div class="container">
-    <div class="row align-items-start">
-        <div class="col-6 " id="col-6-titulo">
-            <h1 id="titulo-login"></h1>
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-6 " id="col-6-titulo">
+                <h1 id="titulo-login"></h1>
+            </div>
+            <div class="col-6" id="col-6">
+                <h1 class="login" id="login">Login</h1>
+                <form action="/login" , method="post">
+                    <div class="mb-3">
+                        <label for="InputEmail1" class="form-label">Seu E-mail</label>
+                        <input type="email" class="form-control" name="InputEmail1" id="InputEmail1"
+                            aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">Nunca compartilharemos seu E-mail com mais ninguém.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputPassword1" class="form-label">Senha</label>
+                        <input type="password" class="form-control" name="InputPassword1" id="InputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Lembrar de mim.</label>
+                        <br>
+                        <a href="/redefinir_senha">Esqueceu a senha?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <a href="/usuarios" class="btn btn-warning">Não tem cadastro? Cadastre já.</a>
+                </form>
+            </div>
         </div>
-        <div class="col-6" id="col-6">
-             <h1 class="login" id="login">Login</h1>
-              <form  action="/login", method="post">
-  <div class="mb-3">
-    <label for="InputEmail1" class="form-label">Seu E-mail</label>
-    <input type="email" class="form-control" name="InputEmail1" id="InputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">Nunca compartilharemos seu E-mail com mais ninguém.</div>
-  </div>
-  <div class="mb-3">
-    <label for="InputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" name="InputPassword1" id="InputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Lembrar de mim.</label>
-    <br>
-    <a href="">Esqueceu a senha?</a>
-  </div>
-  <button type="submit" class="btn btn-primary">Entrar</button>
-  <a href="/usuarios" class="btn btn-warning">Não tem cadastro? Cadastre já.</a>
-</form>
     </div>
-        </div>
-    </div>
-</div>
+    
+    {{#if mensagem_login}}
 
+    <div class="alert alert-danger"><i class="bi bi-exclamation-triangle"> {{mensagem_login}}</i></div>
+
+    {{/if}}
 </main>
 
 <script src="/js/index.js"></script>

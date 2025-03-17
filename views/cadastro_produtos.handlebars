@@ -38,50 +38,51 @@
       <div class="col-6" id="produto">
 
       </div>
-     
+
       <div class="col-6" id="input-cadastro">
         <h1 class="titulo-produto" id="titulo-produto">Cadastrar Produto</h1>
 
         <form action="/cadastrar-produtos" method="post" enctype="multipart/form-data">
-          
+
           <label for="inputProduto" class="form-label">Produto: </label>
           <input type="text" name="inputProduto" class="form-control" id="inputProduto">
-        
-         <label for="inputPreco" class="form-label">Preço: </label>
+
+          <label for="inputPreco" class="form-label">Preço: </label>
           <input type="text" name="inputPreco" class="form-control" id="inputPreco" placeholder="R$ 0.00">
-          
+
           <label for="inputQtd" class="form-label">Quantidade: </label>
           <input type="text" name="inputQtd" class="form-control" id="inputQtd">
-          
+
           <br>
           <input type="file" name="imagem" class="form-control" id="imagem">
-         
-         <br>
+
+          <br>
           <input type="checkbox" name="inputFixar" id="inputFixar" value="sim"> Fixar na página inicial?
           <br>
           <div class="button-cadastro">
             <input type="submit" class="btn btn-primary" value="Cadastrar">
             <input type="reset" class="btn btn-warning" value="Limpar">
           </div>
+
+          {{#if mensagem_produtos}}
+          <div class="alert alert-danger" id="mensagem" role="alert">
+            <p><i class="bi bi-ban"> {{mensagem_produtos}}</i></p>
+          </div>
+          {{/if}}
+
+          {{#if mensagem_sucesso_produto}}
+          <div class="alert alert-success" id="mensagem" role="alert"><i class="bi bi-check2-circle">  {{mensagem_sucesso_produto}}</div></i>
+           
+          {{/if}}
+
+          {{#if mensagem_erro_imagem}}
+
+          <div class="alert alert-danger"><i class="bi bi-bug"></i> {{mensagem_erro_imagem}}</div>
+
+          {{/if}}
+
         </form>
       </div>
     </div>
   </div>
-
-  {{#if mensagem_produtos}}
-<div class="alert alert-danger" id="mensagem" role="alert">
-              <p><i class="bi bi-ban"> {{mensagem_produtos}}</i></p>
-        </div>
-  {{/if}}
-
-  {{#if mensagem_sucesso_produto}}
-  <div class="alert alert-success" id="mensagem" role="alert"><i class="bi bi-check2-circle"></i>  {{mensagem_sucesso_produto}}</div>
-{{/if}}
-
-{{#if mensagem_erro_imagem}}
-
-<div class="alert alert-danger"><i class="bi bi-bug"></i>  {{mensagem_erro_imagem}}</div>
-
-{{/if}}
-
 </main>
