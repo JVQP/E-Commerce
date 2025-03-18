@@ -256,7 +256,6 @@ app.post('/redefinir', function (req, res) {
 
 });
 
-
 app.post('/cadastrar-produtos', function (req, res) {
 
     let produto = req.body.inputProduto;
@@ -307,6 +306,33 @@ app.post('/cadastrar-produtos', function (req, res) {
 
 
 
+})
+
+app.get('/excluir/:id/:imagem', function(req, res) {
+
+    let id = req.params.id;
+    let imagem = req.params.imagem;
+
+    let deletar = `DELETE FROM produtos WHERE id = ${id}`;
+
+    db.run(deletar, (err) => {
+        if(err){
+            console.log('Erro ao exlcuir o produto id: ' + id + ' Mensagem: ' + err.message);
+            res.json({mensagem_delete: `Falha na remoção do produto: ${id}, Mensagem: ${err.message}`});
+        } else {
+            console.log('Produto removido: ' + id);
+
+            fs.unlink(__dirname + '/img/' + imagem, (erro) => {
+                if(!erro){
+                    console.log('Imagem removida!');
+                } else {
+                    console.log('Falha ao remover imagem!')
+                }
+            })
+            res.redirect('/administrador');
+        }
+    })
+    
 })
 // -------------------------------------------------- }
 

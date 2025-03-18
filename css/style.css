@@ -160,7 +160,7 @@ header {
 /* -----------------------------------------  */
 
 
-/*--------- ESTILIZANDO PÁGINA DE CADASTRO ---------- */
+/*--------- ESTILIZANDO PÁGINA DE CADASTRO DE USUÁRIO ---------- */
 
 #cadastro {
     background-image: url('/img/11669604_20943830.jpg');
@@ -219,6 +219,23 @@ header {
    
 
 }
+
+
+/*-----------------------------------------------------------------------------*/
+
+
+
+
+
+/*---------------------------- ESTILIZANDO PÁGINA ADMINISTRADOR ---------------------------- */
+
+#d-grid gap-2, a{
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+}
+
+
 
 
 /*-----------------------------------------------------------------------------*/

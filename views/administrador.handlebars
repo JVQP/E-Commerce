@@ -135,9 +135,9 @@
             <div class="card-body">
               <h5 class="card-title">{{produto}}</h5>
               <p class="card-text"><strong>R$ {{preco}}</strong></p>
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button">Comprar</button>
-                <button class="btn btn-warning" type="button">Adicionar ao carrinho</button>
+              <div class="d-grid gap-2" id="d-grid gap-2">
+                <a href="/excluir/{{id}}/{{imagem}}" class="btn btn-danger" onclick="excluir()">Excluir</a>
+                <a href="/editar/{{id}}" class="btn btn-warning">Editar</a>
               </div>
             </div>
           </div>
@@ -147,3 +147,5 @@
     </div>
 
 </main>
+
+<script src="/js/index.js"></script>
