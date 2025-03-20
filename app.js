@@ -342,6 +342,6 @@ app.get('/excluir/:id/:imagem', function(req, res) {
 // ---- INICIANDO O SERVIDOR -- { 
 
 app.listen(PORT, () => {
-    console.log(`127.0.0.1:${PORT}`);
+    console.log(`Servidor rodando: ${PORT}`);
 })
 // ----------------------------}

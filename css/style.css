@@ -231,8 +231,7 @@ header {
 
 #d-grid gap-2, a{
     text-decoration: none;
-    text-align: center;
-    align-items: center;
+    justify-content: center;
 }
 
 
