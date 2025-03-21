@@ -63,27 +63,21 @@ if (window.location.pathname == '/usuarios') {
     texto_animado2();
 }
 
-if (window.location.pathname == '/administrador') {
+// evento de remoção de produto
 
-    function excluir() {
-        let deletar = confirm('Você realmente dejesa excluir ?');
-
-        if (deletar == true) {
-            var options = {
-                method: 'GET',
-                headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify(id)
-            }
-
-            fetch('/excluir/id/imagem', options)
-
-                .then(response => response.json());
-            then(response => {
-
-                alert(response);
-            });
-        }
-
+function excluir(event) {
+    event.preventDefault();
+    let deletar = confirm('Você realmente deseja excluir ?');
+    if (deletar === true) {
+      window.location.href = event.target.href;
     }
+}
 
-}   
+
+// evento para alterar produto 
+
+/*function alterar(event){
+    event.preventDefault();
+    window.location.href = event.target.href;
+}*/
+

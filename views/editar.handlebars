@@ -1,0 +1,74 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <h2 class="nav-tittle" href="">Tech<span>Info</span></h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/administrador">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/produtos">Cadastrar Produtos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Categorias
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Computadores</a></li>
+              <li><a class="dropdown-item" href="#">Notebook</a></li>
+              <li><a class="dropdown-item" href="#">Fones</a></li>
+              <li><a class="dropdown-item" href="#">Teclados e Mouse´s</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="closer">
+          <a href="/"><button type="button" class="btn-close btn-close-white" aria-label="Close"
+              value="Lougout"></button></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <div class="container" id="#container_editar">
+    <div class="row" id="#row_editar">
+
+      {{#each produtos}}
+
+      <form action="/editar" method="post" id="editar" enctype="multipart/form-data">
+
+        <input type="hidden" name="imagemAntiga" value="{{imagem}}">
+        <input type="hidden" value="{{id}}" name="editar_id">
+        <div class="card" style="width: 18rem;">
+          <img src="/img/{{imagem}}" class="card-img-top" alt="Fone de ouvido"> <input type="file" class="form-control"
+            name="imagem">
+          <div class="card-body">
+            <label for="" class="form-label"><strong>Produto <input type="text" value="{{produto}}" class="form-control"
+                  name="editar_produto"></strong></label>
+            <p class="card-text"><strong>R$ <input type="text" class="form-control" value="{{preco}}"
+                  name="editar_preco"></strong></p>
+            <div class="d-grid gap-2" id="d-grid gap-2">
+              <input type="submit" class="btn btn-danger" value="Alterar" onclick="alterar(event)">
+              <a href="/administrador" class="btn btn-warning">Cancelar</a>
+
+      </form>
+
+      {{/each}}
+    </div>
+    </div>
+  </div>
+</main>

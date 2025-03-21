@@ -118,6 +118,22 @@ app.get('/redefinir_senha', function (req, res) {
     res.render('redefinir_senha');
 })
 
+app.get('/editar/:id', function (req, res) {
+    let id = req.params.id;
+    let editar = `SELECT * FROM produtos WHERE id = ?`;
+
+    db.all(editar, [id], (err, produtos) => {
+        if (err) {
+            console.log('Erro interno no servidor!', err.message);
+            res.render('editar', { mensagem_erro_editar: 'Erro interno no servidor!' });
+        } else {
+            console.table(produtos)
+            res.render('editar', { produtos: produtos });
+        }
+    })
+
+
+})
 
 
 
@@ -306,24 +322,23 @@ app.post('/cadastrar-produtos', function (req, res) {
 
 
 
-})
+});
 
-app.get('/excluir/:id/:imagem', function(req, res) {
+app.get('/excluir/:id/:imagem', function (req, res) {
 
     let id = req.params.id;
     let imagem = req.params.imagem;
-
     let deletar = `DELETE FROM produtos WHERE id = ${id}`;
 
     db.run(deletar, (err) => {
-        if(err){
+        if (err) {
             console.log('Erro ao exlcuir o produto id: ' + id + ' Mensagem: ' + err.message);
-            res.json({mensagem_delete: `Falha na remoção do produto: ${id}, Mensagem: ${err.message}`});
+            res.json({ mensagem_delete: `Falha na remoção do produto: ${id}, Mensagem: ${err.message}` });
         } else {
             console.log('Produto removido: ' + id);
 
             fs.unlink(__dirname + '/img/' + imagem, (erro) => {
-                if(!erro){
+                if (!erro) {
                     console.log('Imagem removida!');
                 } else {
                     console.log('Falha ao remover imagem!')
@@ -332,8 +347,68 @@ app.get('/excluir/:id/:imagem', function(req, res) {
             res.redirect('/administrador');
         }
     })
-    
-})
+
+});
+
+app.post('/editar', function (req, res) {
+
+    let id = req.body.editar_id;
+    let produto = req.body.editar_produto;
+    let preco = req.body.editar_preco;
+    let imagemAntiga = req.body.imagemAntiga;
+
+    try {
+        let imagem = req.files.imagem.name;
+
+        let update_produtos = `UPDATE produtos SET produto = ?, preco = ?, imagem = ? WHERE id = ?`;
+
+        db.run(update_produtos, [produto, preco, imagem, id], (err) => {
+            if (err) {
+                console.log('Erro para editar ou erro interno no servidor!', err.message);
+                res.render('editar', { mensagem_erro_editar: 'Erro para editar ou erro interno no servidor!' });
+            }
+
+            req.files.imagem.mv(__dirname + '/img/' + req.files.imagem.name, (err) => {
+                if (err) {
+                    console.log('Erro ao salvar imagem');
+                    res.render('editar', { mensagem_erro_imagem: 'Erro ao salvar imagem' });
+                }
+              
+                console.log('Produto do id : ' + id + ' Alterado com sucesso!');
+              
+                fs.unlink(__dirname + '/img/' + imagemAntiga, (err) => {
+                    if (err) console.log('Erro ao remover imagem antiga:', err.message);
+                });
+
+            });
+
+        });
+
+    }
+
+    catch (erro) {
+
+
+        let id = req.body.editar_id;
+        let produto = req.body.editar_produto;
+        let preco = req.body.editar_preco;
+
+        let update_produtos1 = `UPDATE produtos SET produto = ?, preco = ? WHERE id = ?`;
+
+        db.run(update_produtos1, [produto, preco, id], (err) => {
+            if (!err) {
+                console.log('Produto alterado com sucesso!');
+                res.redirect('/administrador');
+            } else {
+                res.render('editar');
+                console.log('Erro ao alterar o produto!', { mensagem_erro_alterar: 'Erro na edição do produto!' });
+            }
+        })
+    }
+});
+
+
+
 // -------------------------------------------------- }
 
 
