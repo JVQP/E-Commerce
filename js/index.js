@@ -73,11 +73,6 @@ function excluir(event) {
     }
 }
 
-
-// evento para alterar produto 
-
-/*function alterar(event){
-    event.preventDefault();
-    window.location.href = event.target.href;
-}*/
-
+function alterar(){
+    alert('Produto alterado com sucesso');
+}
