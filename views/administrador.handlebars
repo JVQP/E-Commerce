@@ -126,7 +126,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
        {{#each produtos}}
         <div class="col-2" id="coluna-conteudo">
@@ -136,10 +136,12 @@
               <h5 class="card-title">{{produto}}</h5>
               <p class="card-text">R$ {{preco}}</p>
             </div>
-            <div class="button-actions">
+           
               <a href="/excluir/{{id}}/{{imagem}}" id="{{id}}" class="btn btn-danger" onclick="excluir(event)">Excluir</a>
+            <br>
               <a href="/editar/{{id}}" class="btn btn-warning">Editar</a>
-            </div>
+         
+           
           </div>
         </div>
         {{/each}}

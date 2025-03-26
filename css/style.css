@@ -113,8 +113,7 @@ header {
 
 
 #coluna-conteudo {
-  
- margin-left: 150px;
+  margin-left: 130px;
  cursor: pointer;
  transition: 0.3s;
 
@@ -125,10 +124,7 @@ header {
  
 }
 
-.button-actions, a{
 
-    margin-top: 5px;
-}
 /*    --------------------------     */
 
 /*-----ESTILZANDO PÁGINA DE LOGIN-------------*/
@@ -161,6 +157,39 @@ header {
 .login {
     text-align: center;
 }
+
+@media (min-width: 576px) { 
+
+    .row {
+        padding-top: 90px;
+    
+    }
+    
+    #col-6-titulo {
+        height: 411.7px;
+        display: flex;
+        background-color: #F8F9FA;
+        border-radius: 20px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-image: url('/img/17465926_2007.i039.019_cyber_security_spyware_data_protection_isometric_set-06.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    #col-6 {
+        border: solid #252525;
+        height: 411.7px;
+        border-radius: 20px;
+    }
+    
+    
+    .login {
+        text-align: center;
+    }
+
+ }
 
 /* -----------------------------------------  */
 

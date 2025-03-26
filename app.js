@@ -55,7 +55,7 @@ app.use('/js', express.static(path.join(__dirname, '/js')));
 
 // ---------------ROTAS DA PÁGINA-------------------- {
 
-app.get('/', function (req, res) {
+app.get('/home', function (req, res) {
 
     let Produto = `SELECT * FROM produtos WHERE destaque = 'sim' `;
 
