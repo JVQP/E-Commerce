@@ -126,23 +126,23 @@
     </div>
 
 
-    <div class="container">
+  <div class="container">
       <div class="row">
        {{#each produtos}}
-        <div class="col">
+        <div class="col-2" id="coluna-conteudo">
           <div class="card" style="width: 18rem;">
-            <img src="/img/{{imagem}}" class="card-img-top" alt="Fone de ouvido">
+            <img src="/img/{{imagem}}" class="card-img-top" alt="{{produto}}">
             <div class="card-body">
               <h5 class="card-title">{{produto}}</h5>
-              <p class="card-text"><strong>R$ {{preco}}</strong></p>
-              <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button">Comprar</button>
-                <button class="btn btn-warning" type="button">Adicionar ao carrinho</button>
-              </div>
+              <p class="card-text">R$ {{preco}}</p>
+            </div>
+            <div class="button-actions">
+              <a href="/" class="btn btn-primary">Comprar</a>
+              <a href="/" class="btn btn-warning">Adicionar no carrinho</a>
             </div>
           </div>
+          {{/each}}
         </div>
-        {{/each}}
       </div>
     </div>
 

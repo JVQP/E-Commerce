@@ -83,24 +83,11 @@ header {
 
 }
 
-#card-produtos {
-    height: 270px;
-    width: 516px;
-}
-
-
 .textos {
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
     font-weight: bold;
-}
-
-
-
-.card a {
-    margin-top: 5px;
-    display: flex;
 }
 
 .barra-pesquisa {
@@ -124,6 +111,24 @@ header {
     }
 }
 
+
+#coluna-conteudo {
+  
+ margin-left: 150px;
+ cursor: pointer;
+ transition: 0.3s;
+
+}
+
+#coluna-conteudo:hover{
+    transform: scale(1.1);
+ 
+}
+
+.button-actions, a{
+
+    margin-top: 5px;
+}
 /*    --------------------------     */
 
 /*-----ESTILZANDO PÁGINA DE LOGIN-------------*/
@@ -209,30 +214,18 @@ header {
 /*----------------------------ESTILIZANDO PÁGINA REDEFINIR SENHA---------- */
 
 
-.tittle-redefinir{
+.tittle-redefinir {
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
 }
 
-#redefinir-senha, .row{
+#redefinir-senha,
+.row {
     margin-top: 30px;
-   
+
 
 }
 
-
-/*-----------------------------------------------------------------------------*/
-
-
-
-
-
-/*---------------------------- ESTILIZANDO PÁGINA ADMINISTRADOR ---------------------------- */
-
-#d-grid gap-2, a{
-    text-decoration: none;
-    justify-content: center;
-}
 
 /*-----------------------------------------------------------------------------*/
 
@@ -240,10 +233,11 @@ header {
 
 /* ------------------------------- ESTILIZANDO PÁGINA EDITAR  -------------------------- */
 
-#row_editar, #editar{
- 
-   justify-content: center;
-   display: flex;
+#row_editar,
+#editar {
+
+    justify-content: center;
+    display: flex;
 }
 
 
