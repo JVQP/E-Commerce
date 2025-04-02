@@ -73,6 +73,7 @@ function excluir(event) {
     }
 }
 
+// Evento para alterar produto
 
 function alterar(){
     alert('Produto alterado com sucesso');
